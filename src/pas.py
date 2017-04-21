@@ -35,15 +35,15 @@ def tree_splitter(jplace):
     return branches
 
 
-def edge_counter(split_tree):
+def edge_counter(tree):
     global totalEdgeCount, leafCount, internalCount
     totalEdgeCount -= 1
     leafEdges = []
     internalEdges = []
-    branches = tree_splitter(split_tree)
+    branches = tree_splitter(tree)
     # i is integer index of each element in list
     # v is value (string) at each index
-    for i, v in enumerate(branches):
+    for v in branches:
         if '{' in v:
             totalEdgeCount += 1
         if "|" in v:
@@ -55,7 +55,7 @@ def edge_counter(split_tree):
             internalCount += 1
             internalEdges.append(internal_edgeNum)
     return {"internalEdges": internalEdges, "internalCount": internalCount, "leafCount": leafCount,
-            "leafEdges": leafEdges}
+            "leafEdges": leafEdges, 'totalEdgeCount':totalEdgeCount}
 
 
 def number_of_placements(file):

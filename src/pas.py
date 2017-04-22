@@ -61,7 +61,10 @@ def edge_counter(tree):
 def number_of_placements(file):
     global total_placement_count
     placements = file['placements']
-    total_placement_count += len(placements)
+    for p in placements:
+        for i in p:
+            if i == 'nm':
+                total_placement_count += i.values()[-1]
     return total_placement_count
 
 def edge_indice(file):

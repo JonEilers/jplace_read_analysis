@@ -31,7 +31,7 @@ def test_edge_indice():
 
 def test_placement_location():
     results = placement_location(fake_tree)
-    assert internal_count == 1
-    assert external_count == 1
+    assert results[internal_count] == 1
+    assert results[external_count] == 1
 
 # internalEdges, internalCount, leafCount, leafEdges, totalEdgeCount

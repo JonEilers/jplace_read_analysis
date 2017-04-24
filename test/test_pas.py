@@ -22,8 +22,8 @@ def test_edge_counter():
 
 def test_number_of_placements():
     results = number_of_placements(fake_tree)
-    print(number_of_placements(fake_tree))
-    assert results == 3
+    #print(number_of_placements(fake_tree))
+    assert results == 4
 
 
 # internalEdges, internalCount, leafCount, leafEdges, totalEdgeCount

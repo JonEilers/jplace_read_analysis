@@ -1,11 +1,11 @@
-from src.pas import tree_splitter, edge_counter, number_of_placements
+from src.pas import tree_splitter, edge_counter, number_of_placements, placement_location, internal_count, external_count, edge_indice
 
 fake_tree = {'tree': '(bob{1},bill|c|{3})',
              'placements':[
                            {"p":[123, 345, 3, 678, 987, 753, 321, 111],"nm":['read1','read2','read3', 3]},
-                           {"p":[23,24,22,1,33,44,55,66,7],"nm":['read4',1]}
+                           {"p":[23,24,1,33,44,55,66,7],"nm":['read4',1]}
                            ],
-             "fields":'["classification", "distal_length", "edge_num", "like_weight_ratio", "likelihood", "marginal_like", "pendant_length", "post_prob"]'
+             "fields":["classification", "distal_length", "edge_num", "like_weight_ratio", "likelihood", "marginal_like", "pendant_length", "post_prob"]
 }
 
 def test_tree_splitter():
@@ -25,5 +25,13 @@ def test_number_of_placements():
     #print(number_of_placements(fake_tree))
     assert results == 4
 
+def test_edge_indice():
+    result = edge_indice(fake_tree)
+    assert result == 2
+
+def test_placement_location():
+    results = placement_location(fake_tree)
+    assert internal_count == 1
+    assert external_count == 1
 
 # internalEdges, internalCount, leafCount, leafEdges, totalEdgeCount

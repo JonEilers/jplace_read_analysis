@@ -75,9 +75,9 @@ def placement_location(file):
     internal_edge_list = edge_counter(file)["internalEdges"]
     leaf_edge_list = edge_counter(file)["leafEdges"]
     placements = file['placements']
-    edge_index = edge_indice(file)
+    edge_index = int(edge_indice(file))
     for i in placements:
-        placement_edge = i["p"][0][edge_index]
+        placement_edge = i['p'][edge_index]
         if placement_edge in internal_edge_list:
             global internal_count
             internal_count += 1

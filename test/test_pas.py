@@ -2,8 +2,8 @@ from src.pas import tree_splitter, edge_counter, number_of_placements, placement
 
 fake_tree = {'tree': '(bob{1},bill|c|{3})',
              'placements':[
-                           {"p":[123, 345, 3, 678, 987, 753, 321, 111],"nm":['read1','read2','read3', 3]},
-                           {"p":[23,24,1,33,44,55,66,7],"nm":['read4',1]}
+                           {"p":[[123, 345, 3, 678, 987, 753, 321, 111]],"nm":[['read1','read2','read3', 3]]},
+                           {"p":[[23,24,1,33,44,55,66,7]],"nm":[['read4',1]]}
                            ],
              "fields":["classification", "distal_length", "edge_num", "like_weight_ratio", "likelihood", "marginal_like", "pendant_length", "post_prob"]
 }
@@ -34,4 +34,6 @@ def test_placement_location():
     assert results[internal_count] == 1
     assert results[external_count] == 1
 
-# internalEdges, internalCount, leafCount, leafEdges, totalEdgeCount
+#def test_internal_vs_leaf():
+
+

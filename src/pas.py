@@ -37,7 +37,7 @@ def tree_splitter(jplace):
 
 def edge_counter(tree):
     global totalEdgeCount, edge_leaf_count, edge_internal_count
-    #totalEdgeCount -= 1
+    totalEdgeCount -= 1
     leafEdges = []
     internalEdges = []
     branches = tree_splitter(tree)
@@ -54,6 +54,8 @@ def edge_counter(tree):
             internal_edgeNum = int(v.split('{')[1].split('}')[0])
             edge_internal_count += 1
             internalEdges.append(internal_edgeNum)
+    print(internalEdges)
+    print(leafEdges)
     return {"internalEdges": internalEdges, "internalCount": edge_internal_count, "leafCount": edge_leaf_count,
             "leafEdges": leafEdges, 'totalEdgeCount':totalEdgeCount}
 
@@ -62,7 +64,7 @@ def number_of_placements(file):
     global total_placement_count
     placements = file['placements']
     for p in placements:
-        total_placement_count += (p['nm'][-1][-1])
+        total_placement_count += len(p['nm'])
     return total_placement_count
 
 def edge_indice(file):
@@ -76,14 +78,18 @@ def placement_location(file):
     leaf_edge_list = edge_counter(file)["leafEdges"]
     placements = file['placements']
     edge_index = int(edge_indice(file))
+    print(edge_index)
     for i in placements:
-        placement_edge = i['p'][edge_index]
+        print(i)
+        placement_edge = i['p'][0][edge_index]
         if placement_edge in internal_edge_list:
             global internal_count
             internal_count += 1
         elif placement_edge in leaf_edge_list:
             global external_count
             external_count += 1
+        else:
+            print('Error, placement does not exist')
     return internal_count, external_count
 
 
@@ -97,6 +103,7 @@ def internal_vs_leaf(dir, out_file):
     ivl_dict = {'Leaf Count': external_count, 'Internal Count':internal_count, 'Total Number of Placements':total_placement_count}
     ivl_series = pd.Series(ivl_dict)
     output = ivl_series.to_csv(out_file)
+    print(ivl_dict)
     return output
 
 if __name__ == "__main__":

@@ -108,7 +108,7 @@ def internal_vs_leaf(dir, out_file):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Count the number of internal placements vs leaf placements on a phylogenetic tree. Takes .jplace files")
-    parser.add_argument('-directory', help = 'directory with .jplace files', required = True)
+    parser.add_argument('-directory', help = 'directory where .jplace files are', required = True)
     parser.add_argument('-out_file', help = 'output file (txt format)', required = True)
     args = parser.parse_args()
 

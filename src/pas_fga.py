@@ -122,8 +122,9 @@ def get_cog_ff(cog_name, cog_metadata): # I have very mixed feelings about panda
 def placement_location(file):
     external_count = 0
     internal_count = 0
-    internal_edge_list = edge_counter(file)["internalEdges"]
-    leaf_edge_list = edge_counter(file)["leafEdges"]
+    edge_list = edge_counter(file)
+    internal_edge_list = edge_list["internalEdges"]
+    leaf_edge_list = edge_list["leafEdges"]
     placements = file['placements']
     edge_index = edge_indice(file)
     for i in placements:

@@ -61,11 +61,11 @@ def edge_counter(split_tree):
     return {"internalEdges": internalEdges, "internalCount": internalCount, "leafCount": leafCount,
             "leafEdges": leafEdges}
 
-
 def number_of_placements(file):
     total_placement_count = 0
     placements = file['placements']
-    total_placement_count += len(placements)
+    for p in placements:
+        total_placement_count += len(p['nm'])
     return total_placement_count
 
 def edge_indice(file):
